@@ -213,10 +213,9 @@ function Checkout({ location, history }) {
                       />
                       {errors.security && <div className='mt-2 mb-2 is-size-7'>This field is required</div>}
                     </div>
-                    <h3>Shipping: £{shipping}</h3>
-                    <h3>Total plus shipping:</h3>
-                    <h3>£{(product.product.price + shipping).toFixed(2)}</h3>
-                    <button className="button is-primary">Buy Now</button>
+                    <h3>Shipping: <strong className="purpletext">£{shipping}</strong></h3>
+                    <h3>Total plus shipping: <strong className="purpletext is-size-4">£{(product.product.price + shipping).toFixed(2)}</strong></h3>
+                    <button className="button is-primary mt-4">Buy Now</button>
                   </form >
                   <Link to={`products/${product.product.id}`}><button className='button is-primary mt-4'>Continue Shopping</button></Link>
                   <div className='mt-4'>
