@@ -15,7 +15,7 @@ function Navbar({ history }) {
   useEffect(() => {
     async function fetchData() {
       loggedInUserId = getLoggedInUserId() 
-      if (!isNaN(loggedInUserId)) {
+      if ((loggedInUserId)) {
         try {
           const { data } = await axios.get(`/api/users/${loggedInUserId}`, {
             headers: { Authorization: `Bearer ${token}` }
