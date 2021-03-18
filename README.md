@@ -17,8 +17,22 @@
 ## Technologies Used
 
 ### Back-end:
+- Python
+- Flask
+- Flask SQLAlchemy
+- Blueprint
+- Marshmallow
+- JWT
+- PyTest
 
 ### Frontend:
+- React.js
+- Axios
+- Webpack
+- React-router-dom
+- React-Hooks
+- Bulma
+- Nodemailer
 
 ### Development tools:
 - VS code
@@ -41,16 +55,29 @@ As a group we decided very quickly on the idea of Garms for this project and tha
 
 ![Database relationships](readme_assets/relationship.png)
   
-![Wireframe](readme_assets/user.png) ![Wireframe](readme_assets/list.png) ![Wireframe](readme_assets/product.png)
+![Wireframe](readme_assets/wireframe.png)
   
 We decided early on to keep a high level of communication throughout the project. We started each day with a 30-minute stand up discussion where we would talk about our current tasks and if we had any blockers. We were then on a Zoom meeting and Slack throughout the day so we could keep in contact should we need any quick bug fixing etc. We used Git and GitHub for version control and decided for the first few days to do our pushes and pulls together to aviod any potential Git issues or merge conflicts that may arise. We delegated the work evenly between us and used Trello to create a to-do list that we would all keep on top of throughout the project.
 
-Placeholder image of plan
+![Trello](readme_assets/mvp.png)
 
 ### Back-end - Day 2 & 3
+
+This was my first experience of creating a back-end using Python. We used Flask REST Framework to create a PostgreSQL database with RESTful features. In total we had 5 models.
 
 ### Front-end - Day 4, 5, 6, 7
 
 ### Deployment
 
 The app was then deployed through Heroku. Initially we linked up the front-end to the back-end and tested locally, and once we were happy with this then hit the deploy button on Heroku through the CLI. Once the app was then deployed online we seeded in the relevent data.
+
+## Challenges
+
+
+## Wins
+
+## Key Learnings
+
+
+## Future Improvements
+
