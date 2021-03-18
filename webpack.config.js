@@ -2,6 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 // const WorkboxPlugin = require('workbox-webpack-plugin')
+// const CopyWebpackPlugin = require('copy-webpack-plugin')
 const Dotenv = require('dotenv-webpack')
 const env = process.env.NODE_ENV === 'production' ? (
   new webpack.EnvironmentPlugin({ ...process.env })
@@ -53,6 +54,10 @@ module.exports = () => {
       //   clientsClaim: true,
       //   skipWaiting: true
       // }),
+      // new CopyWebpackPlugin([
+      //   { from: '/manifest', to: 'manifest' }
+      // ]),
+      // new webpack.HotModuleReplacementPlugin(),
       env
     ]
   }

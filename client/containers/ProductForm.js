@@ -231,16 +231,16 @@ export default function ProductForm({ match, history }) {
                       required: 'select one option'
                     })}>
                     <option value=''>Item category</option>
-                    <option value='Outerwear'>Outerwear</option>
                     <option value='Accessories'>Accessories</option>
-                    <option value='Tops'>Tops</option>
                     <option value='Bottoms'>Bottoms</option>
-                    <option value='Skirts'>Skirts</option>
                     <option value='Dresses'>Dresses</option>
-                    <option value='Underwear'>Underwear</option>
-                    <option value='Shoes'>Shoes</option>
                     <option value='Lingerie'>Lingerie</option>
                     <option value='Other'>Other</option>
+                    <option value='Outerwear'>Outerwear</option>
+                    <option value='Shoes'>Shoes</option>
+                    <option value='Skirts'>Skirts</option>
+                    <option value='Tops'>Tops</option>
+                    <option value='Underwear'>Underwear</option>
                   </select>
                 </div>
               </div>

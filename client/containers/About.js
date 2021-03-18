@@ -6,46 +6,45 @@ function About() {
 
   const techInfo = [
     {
-      url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/1200px-HTML5_logo_and_wordmark.svg.png',
+      url: 'https://res.cloudinary.com/da3rlixzz/image/upload/v1616002348/GA%20Project%204%20images/1200px-HTML5_logo_and_wordmark.svg_earyn1.png',
       alt: 'HTML5'
     },
     {
-      url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/CSS3_logo_and_wordmark.svg/1200px-CSS3_logo_and_wordmark.svg.png',
+      url: 'https://res.cloudinary.com/da3rlixzz/image/upload/v1616002377/GA%20Project%204%20images/CSS3_logo_and_wordmark.svg_h33grc.png',
       alt: 'CSS3'
     },
     {
-      url: 'https://bulma.io/images/bulma-logo.png',
+      url: 'https://res.cloudinary.com/da3rlixzz/image/upload/v1616002405/GA%20Project%204%20images/bulma-logo_abh1lm.png',
       alt: 'Bulma'
     },
     {
-      url: 'https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png',
+      url: 'https://res.cloudinary.com/da3rlixzz/image/upload/v1616002428/GA%20Project%204%20images/JavaScript-logo_tiowac.png',
       alt: 'JavaScript'
     },
     {
-      url: 'https://cdn.freebiesupply.com/logos/large/2x/react-1-logo-png-transparent.png',
+      url: 'https://res.cloudinary.com/da3rlixzz/image/upload/v1616002460/GA%20Project%204%20images/react-1-logo-png-transparent_l1td6v.png',
       alt: 'React'
     },
     {
-      url: 'https://www.postgresql.org/media/img/about/press/elephant.png',
+      url: 'https://res.cloudinary.com/da3rlixzz/image/upload/v1616002501/GA%20Project%204%20images/elephant_1_dpmtcn.png',
       alt: 'PostgreSQL'
     },
     {
-      url: 'https://docs.pytest.org/en/stable/_static/pytest1.png',
+      url: 'https://res.cloudinary.com/da3rlixzz/image/upload/v1616002526/GA%20Project%204%20images/pytest1_owfuqs.png',
       alt: 'PyTest'
     },
     {
-      url: 'https://marshmallow.readthedocs.io/en/stable/_static/marshmallow-logo.png',
+      url: 'https://res.cloudinary.com/da3rlixzz/image/upload/v1616002560/GA%20Project%204%20images/marshmallow-logo_hka29l.png',
       alt: 'Marshmallow'
     },
     {
-      url: 'https://flask.palletsprojects.com/en/1.1.x/_images/flask-logo.png',
+      url: 'https://res.cloudinary.com/da3rlixzz/image/upload/v1616002566/GA%20Project%204%20images/flask-logo_z4xuum.png',
       alt: 'Flask'
     },
     {
-      url: 'https://www.sqlalchemy.org/img/sqla_logo.png',
+      url: 'https://res.cloudinary.com/da3rlixzz/image/upload/v1616002571/GA%20Project%204%20images/sqla_logo_r4iq4c.png',
       alt: 'SQLAlchemy'
     }
-    
   ]
 
   const tech = techInfo.map(t => {
