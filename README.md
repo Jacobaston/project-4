@@ -41,7 +41,7 @@ As a group we decided very quickly on the idea of Garms for this project and tha
 
 ![Database relationships](readme_assets/relationship.png)
   
-![Wireframe](readme_assets/user.png) ![Wireframe](readme_assets/list.png) ![Wireframe](readme_assets/product.png)
+![Wireframe](readme_assets/wireframe.png)
   
 We decided early on to keep a high level of communication throughout the project. We started each day with a 30-minute stand up discussion where we would talk about our current tasks and if we had any blockers. We were then on a Zoom meeting and Slack throughout the day so we could keep in contact should we need any quick bug fixing etc. We used Git and GitHub for version control and decided for the first few days to do our pushes and pulls together to aviod any potential Git issues or merge conflicts that may arise. We delegated the work evenly between us and used Trello to create a to-do list that we would all keep on top of throughout the project.
 
