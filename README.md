@@ -17,8 +17,22 @@
 ## Technologies Used
 
 ### Back-end:
+- Python
+- Flask
+- Flask SQLAlchemy
+- Blueprint
+- Marshmallow
+- JWT
+- PyTest
 
 ### Frontend:
+- React.js
+- Axios
+- Webpack
+- React-router-dom
+- React-Hooks
+- Bulma
+- Nodemailer
 
 ### Development tools:
 - VS code
