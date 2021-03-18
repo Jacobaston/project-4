@@ -3,6 +3,8 @@
 
 ## Overview
 
+![Logo](readme_assets/logo.png)
+
 ## The Brief
 
 * **Build a full-stack application** by making your own back-end and your own front-end
@@ -37,9 +39,9 @@
 
 As a group we decided very quickly on the idea of Garms for this project and that we all wanted to be involved in the full-stack development of the app. We also decided early on that we should develop it to be fully responsive initially built mobile first. With that in mind we used photoshop to create a storyboard/wireframe as well QuickDBD for the models we required and the relationships between them.
 
-Placeholder image of plan
+![Database relationships](readme_assets/relationship.png)
   
-Placeholder image of plan
+![Wireframe](readme_assets/user.png) ![Wireframe](readme_assets/list.png) ![Wireframe](readme_assets/product.png)
   
 We decided early on to keep a high level of communication throughout the project. We started each day with a 30-minute stand up discussion where we would talk about our current tasks and if we had any blockers. We were then on a Zoom meeting and Slack throughout the day so we could keep in contact should we need any quick bug fixing etc. We used Git and GitHub for version control and decided for the first few days to do our pushes and pulls together to aviod any potential Git issues or merge conflicts that may arise. We delegated the work evenly between us and used Trello to create a to-do list that we would all keep on top of throughout the project.
 
