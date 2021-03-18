@@ -49,8 +49,21 @@ We decided early on to keep a high level of communication throughout the project
 
 ### Back-end - Day 2 & 3
 
+This was my first experience of creating a back-end using Python. We used Flask REST Framework to create a PostgreSQL database with RESTful features. In total we had 5 models.
+
 ### Front-end - Day 4, 5, 6, 7
 
 ### Deployment
 
 The app was then deployed through Heroku. Initially we linked up the front-end to the back-end and tested locally, and once we were happy with this then hit the deploy button on Heroku through the CLI. Once the app was then deployed online we seeded in the relevent data.
+
+## Challenges
+
+
+## Wins
+
+## Key Learnings
+
+
+## Future Improvements
+
