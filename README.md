@@ -5,6 +5,8 @@
 
 ![Logo](readme_assets/logo.png)
 
+Check it out [here](https://ja-garms.herokuapp.com/)
+
 ## The Brief
 
 * **Build a full-stack application** by making your own back-end and your own front-end
