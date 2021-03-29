@@ -79,9 +79,17 @@ Serializers were also created and these were tested in Table Plus to ensure we h
 
 ![User Serializers](User Serializers)
 
-Pytest was used for the testing on the bacjend, and each endpoint had a test associated to it; by the end of the project, all 16 tests passed. Testing was very important to us.
+Pytest was used for the testing on the backend, and each endpoint had a test associated to it; by the end of the project, all 16 tests passed. Testing was very important to us as we wanted to limit the amount of debugging time when writing the controllers for our backend. By having clear tests for each controller we could make sure that each endpoint would behave excatly as we expected before writing any code.
+
+![Testing code](Testing)
 
 ### Front-end - Day 4, 5, 6, 7
+
+Once the back end was complete, we split the front end tickets which had been created in Trello. I will discuss the pages which I took ownership of, and I also supported India and Hannah with de-bugging the other pages. For styling, we decided to use Bulma due to it being a mobile first framework.
+
+# Registration & login 
+
+Registration had to allow a user to creat a profile by filling out a form and submitting the data to our database, for this we used 'React-forms'. By using React-forms we could benefit from built in validation on each input field, this would make sure that the user would input data in the way in which we would like it to be stored.
 
 ### Deployment
 
