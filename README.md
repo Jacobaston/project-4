@@ -220,9 +220,57 @@ def test_update_user():
 
 Once the back end was complete, we split the front end tickets which had been created in Trello. I will discuss the pages which I took ownership of, and I also supported India and Hannah with de-bugging the other pages. For styling, we decided to use Bulma due to it being a mobile first framework.
 
-# Registration & login 
+#### Registration & login 
 
 Registration had to allow a user to creat a profile by filling out a form and submitting the data to our database, for this we used 'React-forms'. By using React-forms we could benefit from built in validation on each input field, this would make sure that the user would input data in the way in which we would like it to be stored.
+
+```py
+  async function onSubmit(data) {
+    updateErrorbox('')
+    const formdata = {
+      'username': data.username,
+      'email': data.email,
+      'password': data.password,
+      'first_name': data.first_name,
+      'last_name': data.last_name,
+      'location': data.location,
+      'image': 'https://i.ibb.co/6Zyw6CD/garms-icon.png'
+    }
+
+    try {
+      const { data } = await axios.post('/api/signup', formdata,)
+      if (data.id) {
+        history.push('/login/success')
+      } else {
+        updateErrorbox('Unable to register user. Username and email address must be unique.')
+      }
+    } catch (err) {
+      console.log(err.response.data)
+    }
+  }
+```
+<br/>
+
+```py
+{errorbox && <div className='box has-background-danger has-text-white'>{errorbox}</div>}
+
+            <form onSubmit={handleSubmit(onSubmit)} >
+
+              <div className='field'>
+                <label>
+                  <p>Username</p>
+                </label>
+                <input
+                  className={`input ${errors.username && 'is-danger'}`}
+                  name='username'
+                  placeholder='Username'
+                  type='text'
+                  defaultValue=''
+                  ref={register({ required: true })}
+                />
+                {errors.username && <div className='mt-2 mb-2 is-size-7'>This field is required</div>}
+              </div>
+```
 
 ### Deployment
 
