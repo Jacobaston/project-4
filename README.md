@@ -271,6 +271,36 @@ Registration had to allow a user to creat a profile by filling out a form and su
                 {errors.username && <div className='mt-2 mb-2 is-size-7'>This field is required</div>}
               </div>
 ```
+Once the user has created the profile they are then redirected to the login page, in which they would have to enter their uniquie email and password in order to access their newly created profile.
+
+#### Single Page
+
+#### Checkout
+
+
+#### Facebook Share
+
+In order to make our Garms app more of a social experience we wanted users to be able to share any of the items via social media, this was done through a react compnent called 'React-share'. We implimented this on the single item page, where once the user clicks on the share button they will be redirected to a new window. The user can then compose a Facebook post and share the exact URL of any particualr item on the Garms app.
+
+```js
+import React from 'react'
+import { FacebookShareButton } from 'react-share'
+
+export default function ShareButtonFacebook({ productId }) {
+  const shareButtonProps = {
+    url: `https://ja-garms.herokuapp.com/products/${productId}`,
+    network: 'Facebook',
+    text: 'Check out this cool listing on Garms!',
+    longtext:
+      ''
+  }
+
+  return <FacebookShareButton {...shareButtonProps}>
+    <div className="button facebook" ><i className='fab fa-facebook-f mr-2'></i>Share</div>
+  </FacebookShareButton>
+
+}
+```
 
 ### Deployment
 
