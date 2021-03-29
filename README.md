@@ -372,4 +372,20 @@ The app was then deployed through Heroku. Initially we linked up the front-end t
 
 ## Results
 
-![Logo](readme_assets/logo.png)
+![Home](readme_assets/home.png)
+
+<br/>
+
+![Profile](readme_assets/profile.png)
+
+<br/>
+
+![Search](readme_assets/search.png)
+
+<br/>
+
+![Single-product](readme_assets/single-product.png)
+
+<br/>
+
+![Checkout](readme_assets/checkout.png)
