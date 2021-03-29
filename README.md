@@ -271,7 +271,28 @@ Registration had to allow a user to creat a profile by filling out a form and su
                 {errors.username && <div className='mt-2 mb-2 is-size-7'>This field is required</div>}
               </div>
 ```
-Once the user has created the profile they are then redirected to the login page, in which they would have to enter their uniquie email and password in order to access their newly created profile.
+Once the user has created the profile they are then redirected to the login page, in which they would have to enter their uniquie email and password in order to access their newly created profile. At this point we would need to check the hashed password matches that of the inputted password in the login fields, we used 'bcrypt' on the backend to do this. Once the password had been checked the user would get a JWT token with a timed expiry limit so that the user can stay logged in for certain amount of time before having to re-enter their login details, this was for the security of the user.
+
+```py
+    @hybrid_property
+    def password(self):
+        pass
+        
+    @password.setter
+    def password(self, password_plaintext):
+        encoded_pw = bcrypt.generate_password_hash(password_plaintext)
+        self.password_hash = encoded_pw.decode('utf-8')
+    def validate_password(self, password_plaintext):
+        return bcrypt.check_password_hash(self.password_hash, password_plaintext)
+    def generate_token(self):
+        payload = {
+            "sub": self.id,
+            "iat": datetime.utcnow(),
+            "exp": datetime.utcnow() + timedelta(days=1)
+        } 
+        token = jwt.encode(payload, secret, 'HS256')
+        return token
+ ```
 
 #### Single Page
 
@@ -354,21 +375,26 @@ export default function ShareButtonFacebook({ productId }) {
 
 The app was then deployed through Heroku. Initially we linked up the front-end to the back-end and tested locally, and once we were happy with this then hit the deploy button on Heroku through the CLI. Once the app was then deployed online we seeded in the relevent data.
 
-## Challenges
-- Python and Flask were new technologies for this project, so it took slightly longer than expected to determine the relationships between the tables. However, it was a great learning experience.
+## Conclusion
 
-## Wins
+#### Challenges
+- Python and Flask were new technologies for this project, so it took slightly longer than expected to determine the relationships between the tables. However, it was a great learning experience.
+- Time. Due to this project only being a week long we had plan our MVP very carfully and try to not let our ideas run away with us. Once we had the MVP we could then look to add new features and add more functionally to the app.
+
+#### Wins
 - The project was a great opportunity to learn Python, Flask and using a PostgreSQL database, as this was my first opportunity to do so.
 - I am becoming more comfortable with React and trying out new libraries.
 
-## Key Learnings
+#### Key Learnings
+- For this project we wanted to impliment all the aglie methologies we have been learning and put them into practice in a real world situation.
+- The division of work - We wanted to lean on each others strengths and weaknesses, teaming up on a problem when needed more support and working individually when we felt comfortable with a task.
 
-
-## Future Improvements
-- Include password confirmation on the registration page
+#### Future Improvements
+- Include password confirmation on the registration page.
 - Allow a user to sell more than one of each item, and subsequently show how many of a particular item are available on the single item page.
-- Front end testing
+- Front end testing.
 - Allow in app messging between users so that they can negotiate or confirm things about any particular items
+- Make this a progressive web app - The main functionally was added for this, however due to our time constraints we didn't have enough time to iron out all the bugs.
 
 ## Results
 
