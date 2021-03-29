@@ -275,8 +275,56 @@ Once the user has created the profile they are then redirected to the login page
 
 #### Single Page
 
-#### Checkout
+The single product page shows an image of the product, and information about this, including a description, brand, price, size and condition. You can also see the seller's details and a link to their profile page, so you can view other items that they are currently selling.
 
+This page shows different buttons, dependent on whether you were the owner of the listing or not. If you were the owner of the listing, you are able to click buttons to edit or delete the listing.
+
+```js
+{product.user && <>
+  {loggedInUserId === product.user.id &&
+  <>
+    {product.in_stock &&
+      <>
+        <Link to={`/productform/${productId}`} className="button is-primary">Edit</Link>
+        <button className="button is-primary" onClick={handleDelete}>Delete</button>
+      </>
+     }
+   </>
+  }
+</>}
+```
+
+If you are not the owner, you can add or remove the listing from your wishlist, dependent on the current state (true/false) of inWishList.
+
+```js
+{loggedInUserId !== product.user.id && <>
+  {inWishlist ?
+    <button className="button" onClick={removeFromWishlist}><i className='fas fa-heart mr-2'></i> Remove From Wishlist</button>
+    :
+    <button className="button" onClick={handleWishlist}><i className='fas fa-heart mr-2'></i> Add To Wishlist</button>
+}
+```
+
+The below function would renders a buy now button if the current user is not the owner and if the product is in stock. The button is a link, which takes the user to 'checkout' to buy the item.
+
+```js
+function handleInStock() {
+    if (loggedInUserId === (product.user && product.user.id)) {
+      return
+    } else {
+      if (product.in_stock === true) {
+        return <>
+          <Link className="button is-primary" to={{%
+            pathname: '/checkout',
+            state: {%
+              product: product
+            %}
+          %}}>Buy now</Link>
+        </>
+      }
+    }
+  }
+```
 
 #### Facebook Share
 
@@ -307,12 +355,21 @@ export default function ShareButtonFacebook({ productId }) {
 The app was then deployed through Heroku. Initially we linked up the front-end to the back-end and tested locally, and once we were happy with this then hit the deploy button on Heroku through the CLI. Once the app was then deployed online we seeded in the relevent data.
 
 ## Challenges
-
+- Python and Flask were new technologies for this project, so it took slightly longer than expected to determine the relationships between the tables. However, it was a great learning experience.
 
 ## Wins
+- The project was a great opportunity to learn Python, Flask and using a PostgreSQL database, as this was my first opportunity to do so.
+- I am becoming more comfortable with React and trying out new libraries.
 
 ## Key Learnings
 
 
 ## Future Improvements
+- Include password confirmation on the registration page
+- Allow a user to sell more than one of each item, and subsequently show how many of a particular item are available on the single item page.
+- Front end testing
+- Allow in app messging between users so that they can negotiate or confirm things about any particular items
 
+## Results
+
+![Logo](readme_assets/logo.png)
