@@ -71,17 +71,150 @@ As a result of our substantial planning, we were confident in the relationships 
 
 Below is the product model, and it was important here to ensure the ForiegnKey and relationships between models were correct. One area I found challenging intially was the cascading e.g. if a user account was deleted, this should not delete the product as this would still need to show in a buyer's account. Once I understood this, finalising the models was much easier.
 
-![Product Model](product model screenshot)
+```py
+class Product(db.Model, BaseModel):
+    __tablename__ = "product"
+
+    product_name = db.Column(db.Text, nullable=False)
+    product_image = db.Column(db.Text, nullable=False)
+    brand = db.Column(db.Text, nullable=True)
+    size = db.Column(db.Text, nullable=False)
+    description = db.Column(db.Text, nullable=True)
+    category = db.Column(db.Text, nullable=False)
+    price = db.Column(db.Float, nullable=False)
+    condition = db.Column(db.Text, nullable=False)
+    in_stock = db.Column(db.Boolean, nullable=False)
+    gender = db.Column(db.Text, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id", ondelete="CASCADE"))
+
+    wishlist = db.relationship('Wishlist', backref='product', cascade="all, delete")
+    order_history = db.relationship('OrderHistory', backref='product', cascade="all, delete")
+```
 
 Once we had the models set up, we split the controllers that would be required and all wrote a proportion each. I took ownership of the product and user controllers.
 
 Serializers were also created and these were tested in Table Plus to ensure we had all the required data. Due to the relationships between tables, all schemas had nested fields. To ensure that there were no circular import errors, 'simple' schemas were created. An example of this is below; in the user schema, the product, order history and wishlist IDs were nested. We wanted to be able to see the ID of the user which a product related to, so SimpleUserSchema was created so that this could be nested within the ProductSchema.
 
-![User Serializers](User Serializers)
+```py
+from app import ma
+from models.user import User
+from marshmallow import fields
+
+class UserSchema(ma.SQLAlchemyAutoSchema):
+
+    class Meta:
+        model = User
+        load_instance = True
+        exclude = ('password_hash',)
+        load_only = ('password')
+
+    password = fields.String(required=True)
+    product = fields.Nested('ProductSchema', many=True)
+    order_history = fields.Nested('OrderHistorySchema', many=True)
+    wishlist = fields.Nested('WishlistSchema', many=True)
+
+    class SimpleUserSchema(ma.SQLAlchemyAutoSchema):
+        class Meta:
+            model = User
+            load_instance = True
+            exclude = ('password_hash', 'first_name', 'last_name', 'location', 'created_at')
+            load_only = ('email', 'password')
+
+        password = fields.String(required=True)
+```
 
 Pytest was used for the testing on the backend, and each endpoint had a test associated to it; by the end of the project, all 16 tests passed. Testing was very important to us as we wanted to limit the amount of debugging time when writing the controllers for our backend. By having clear tests for each controller we could make sure that each endpoint would behave excatly as we expected before writing any code.
 
-![Testing code](Testing)
+```py
+from app import app, db
+import json
+from tests.lib import login
+
+def test_get_user():
+
+    client = app.test_client()
+    response = client.get("/api/users")
+
+    assert len(response.json) == 4
+    assert response.status_code == 200
+
+def test_single_user():
+
+    client = app.test_client()
+    response = client.get("/api/users/1")
+
+    assert response.json['username'] == 'indiak'
+    assert response.status_code == 200 
+
+def test_signup():
+
+    client = app.test_client()
+
+    user_data = {"username": "sam", "email": "sam@sam.com", "password": "sam123", "first_name": "Sam", "last_name": "Jones", "image": "TODO", "location": "London"}
+    user_response = client.post(
+        "/api/signup",
+        data=json.dumps(user_data),
+        content_type="application/json"
+    )
+
+    assert user_response.json['username'] == 'sam'
+    assert user_response.status_code == 201
+
+def test_login():
+
+    client = app.test_client()
+
+    login_data = {"password": "jake123", "email": "jake@jake.com"}
+    response = client.post(
+        "/api/login",
+        data=json.dumps(login_data),
+        content_type="application/json"
+    )
+
+    assert response.json["message"] == "Welcome back!"
+    assert response.status_code == 200
+
+def test_delete_user():
+
+    client = app.test_client()
+
+    login_data = {"password": "ben123", "email": "ben@ben.com"}
+    login_response = client.post(
+        "/api/login", data=json.dumps(login_data), content_type="application/json"
+    )
+    token = login_response.json["token"]
+
+    user_data = {"username": "ben", "email": "ben@ben.com", "password": "ben123", "first_name": "Ben", "last_name": "Simpson", "image": "TODO", "location": "London"}
+    request_headers = {"Authorization": f"Bearer {token}"}
+
+    user_response = client.delete(
+        "/api/users/4",
+        data=json.dumps(user_data),
+        content_type="application/json",
+        headers=request_headers,
+    )
+
+    assert user_response.json['message'] == 'User deleted successfully'
+    assert user_response.status_code == 200
+
+def test_update_user():
+
+    client = app.test_client()  
+
+    token = login(client)
+
+    update_request = {"location": "Sydney"}
+    request_headers = {"Authorization": f"Bearer {token}"}
+    user_response = client.put(
+        "/api/users/2",
+        data=json.dumps(update_request),
+        content_type="application/json",
+        headers=request_headers,
+    )
+
+    assert user_response.json["location"] == "Sydney"
+    assert user_response.status_code == 200
+```
 
 ### Front-end - Day 4, 5, 6, 7
 
